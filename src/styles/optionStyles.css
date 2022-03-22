@@ -1,0 +1,24 @@
+.optionRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 70%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.optionRow div{
+    display: inherit;
+    justify-content: space-evenly;
+    width: 75%;
+}
+
+.optionRow div strong{
+    align-self: center;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    align-self: center;
+}
