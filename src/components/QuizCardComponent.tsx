@@ -20,8 +20,10 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
                         questions.map(item => {
                             return (item.id === currentQuestion) ? 
                             <div>
-                                <p>{item.description}</p>
-                                <OptionComponent /> 
+                                <strong>{item.description}</strong>
+                                {item.options.map((option, idx) => {
+                                    return <OptionComponent key={idx} optionId={idx} option={option} iconId={0}  /> 
+                                })}
                             </div>
                             : false
                         })

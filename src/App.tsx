@@ -5,7 +5,6 @@ import data from "./data/sample-data.json"
 function App() {
   return (
     <div className="App">
-
       <QuizCardComponent data={data} />
     </div>
   );

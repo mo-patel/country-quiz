@@ -13,6 +13,7 @@
     width: 100%;
     border: 3px solid azure;
     border-radius: 5%;
+    min-height: 90%;
 }
 
 .quizCardParent h2 {
