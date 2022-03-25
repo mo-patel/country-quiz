@@ -1,10 +1,11 @@
 import './App.css';
-import { OptionComponent } from './components/OptionComponent';
+import { QuizCardComponent } from './components/QuizCardComponent';
 
 function App() {
   return (
     <div className="App">
-      <OptionComponent />
+
+      <QuizCardComponent />
     </div>
   );
 }
