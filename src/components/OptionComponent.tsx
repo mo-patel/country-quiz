@@ -9,7 +9,7 @@ interface optionComponentProps {
 export const OptionComponent: FC<optionComponentProps> = ({optionId, option, iconId}) => {
     const letters: string[] = ["A", "B", "C", "D"];
     return (
-        <div className="optionRow">
+        <div className="selectable optionRow">
             <div>
                 <strong>{letters[optionId]}</strong>
                 <p>{option}</p>
