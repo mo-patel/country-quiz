@@ -19,6 +19,12 @@
     align-self: center;
 }
 
+.optionRow:hover {
+    background-color: darkolivegreen;
+    cursor: pointer;
+    user-select: none;
+}
+
 .icon {
     width: 20px;
     height: 20px;

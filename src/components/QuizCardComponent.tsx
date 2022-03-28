@@ -1,17 +1,18 @@
 import { FC, useEffect, useState } from "react";
 import "../styles/quizCardStyles.css"
-import { Question } from "../types/Question";
+import { NewQuizRequest } from "../types/NewQuizResponse";
 import { OptionComponent } from "./OptionComponent";
 import { WinnerComponent } from "./WinnerComponent";
 
 interface quizCardProps {
-    data: Question[]
+    data: NewQuizRequest
 }
 
 export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
-    const [questions, setQuestions] = useState(data)
+    const [questions, setQuestions] = useState(data.questions)
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [selection, setSelection] = useState("");
+    const numQuestions = data.numberOfQuestions;
     const select = (option: string) => {
         setSelection(option);
         //answer checking mechanism goes here
@@ -28,10 +29,10 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
                         {
                             questions.map(item => {
                                 return (item.id === currentQuestion) ? 
-                                <div>
-                                    <strong>{item.description}</strong>
-                                    {item.options.map((option, idx) => {
-                                        return <OptionComponent key={idx} optionId={idx} option={option} iconId={0}  /> 
+                                <div key={item.id}>
+                                    <strong>{item.text}</strong>
+                                    {item.answers.map((option) => {
+                                        return <OptionComponent key={option.id} option={option} iconId={0}  /> 
                                     })}
                                 </div>
                                 : false

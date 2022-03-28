@@ -1,17 +1,60 @@
-[
-    {
-        "id": 1,
-        "description": "Kuala Lumpur is the capital of",
-        "options" : ["Vietnam", "Malaysia", "Sweden", "Austria"]
-    },
-    {
-        "id": 2,
-        "description": "London is the capital of",
-        "options" : ["Ireland", "Netherland", "England", "New Zealand"]
-    },
-    {
-        "id": 3,
-        "description": "Paris is the capital of",
-        "options" : ["France", "Australia", "Belgium", "Canada"]
-    }
-]
+ {
+      "questions": [
+        {
+          "id": 1,
+          "text": "Kuala Lumpur is the capital of",
+          "mediaUrl": "string",
+          "type": "CAPITAL_CITY",
+          "answers": [
+            {
+              "id": 0,
+              "text": "Vietnam",
+              "correct": false
+            },
+            {
+              "id": 1,
+              "text": "Malaysia",
+              "correct": true
+            },{
+              "id": 2,
+              "text": "Sweden",
+              "correct": false
+            },
+            {
+              "id": 3,
+              "text": "Austria",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "text": "Ottowa is the capital of",
+          "mediaUrl": "string",
+          "type": "CAPITAL_CITY",
+          "answers": [
+            {
+              "id": 0,
+              "text": "New Zealand",
+              "correct": false
+            },
+            {
+              "id": 1,
+              "text": "Australia",
+              "correct": false
+            },{
+              "id": 2,
+              "text": "Belgium",
+              "correct": false
+            },
+            {
+              "id": 3,
+              "text": "Canada",
+              "correct": true
+            }
+          ]
+        }
+      ],
+      "createdAt": "2022-03-28T11:45:09.917Z",
+      "numberOfQuestions": 0
+}

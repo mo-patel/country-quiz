@@ -1,5 +1,9 @@
+import { Answer } from "./Answer";
+
 export interface Question {
     id: number;
-    description: string;
-    options: string[];
+    text: string;
+    mediaUrl: string;
+    type: string;
+    answers: Answer[];
 }
