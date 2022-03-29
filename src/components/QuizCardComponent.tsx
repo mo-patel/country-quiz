@@ -74,6 +74,7 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
                         } */}
                         {
                             <div>
+                                {question.mediaUrl ? <img className="flagImg" src={question.mediaUrl} alt="flag" /> : null}
                                 <strong>{question.text}</strong>
                                 {question.answers.map((option: Answer, idx: number) => {
                                     return <OptionComponent key={option.id} option={option} selected={selection}

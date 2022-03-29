@@ -3,7 +3,7 @@
         {
           "id": 1,
           "text": "Kuala Lumpur is the capital of",
-          "mediaUrl": "string",
+          "mediaUrl": "/flag.png",
           "type": "CAPITAL_CITY",
           "answers": [
             {
