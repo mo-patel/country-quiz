@@ -2,7 +2,6 @@ import React, { FC, RefObject, useEffect, useRef, useState } from "react";
 import "../styles/quizCardStyles.css"
 import { Answer } from "../types/Answer";
 import { NewQuizRequest } from "../types/NewQuizResponse";
-import { Question } from "../types/Question";
 import { OptionComponent } from "./OptionComponent";
 import { WinnerComponent } from "./WinnerComponent";
 
@@ -16,16 +15,27 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
     const [selection, setSelection] = useState(0);
     const [incorrect, setIncorrect] = useState(0)
     const [correctResponses, setCorrectResponses] = useState(0);
+    const [quizComplete, setQuizComplete] = useState(false);
     const refs: RefObject<any> = useRef([1,2,3,4].map(()=> React.createRef())); //mapping array of 4 possible answers
     let question: any = questions[currentQuestion];
     useEffect(()=>{
         clearState();
         question = questions[currentQuestion];
     }, [currentQuestion])
+
     const clearState = () => {
         setIncorrect(0);
         setSelection(0);
     }
+
+    const proceed = (complete? :boolean): void => {
+        if(complete){
+            setQuizComplete(true)
+            return;
+        }
+        setCurrentQuestion(currentQuestion + 1)
+    }
+    
     const select = (option: Answer) => {
         if(selection > 0)
             return;
@@ -47,7 +57,7 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
         <div className="quizCardParent">
             <h2>Country quiz</h2>
             <div className="quizCard">
-                {currentQuestion > questions.length ? 
+                {quizComplete ? 
                 <WinnerComponent /> :
                 <>
                     <img className="adventureImg" src="/undraw_adventure.svg" alt="adventure" />
@@ -75,7 +85,9 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
                             </div>    
                         }
                         {selection ? 
-                            <button className="proceedBtn">{currentQuestion === questions.length ? "Finish" : "Next"}</button>
+                            <button className="proceedBtn" onClick={()=> proceed((currentQuestion + 1) === questions.length)}>
+                                {(currentQuestion + 1) === questions.length ? "Finish" : "Next"}
+                            </button>
                             : false
                         }
                     </div>

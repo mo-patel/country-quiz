@@ -13,7 +13,7 @@ interface optionComponentProps {
 export const OptionComponent: FC<optionComponentProps> = ({refs, option, showIcon, optionSelectCb}) => {
     const letters: string[] = ["A", "B", "C", "D"];
     return (
-        <div className="selectable optionRow" ref={refs} onClick={(e) => optionSelectCb(option)} >
+        <div className="selectable optionRow" ref={refs} onClick={() => optionSelectCb(option)} >
             <div>
                 <strong>{letters[option.id - 1]}</strong>
                 <p>{option.text}</p>
