@@ -46,6 +46,10 @@
     width: 100%;
 }
 
+.quiz > div > strong {
+    margin-bottom: 6%;
+}
+
 .proceedBtn {
     width: 25%;
     align-self: flex-end;
@@ -57,4 +61,12 @@
     border-radius: 10px;
     color: white;
     padding: 2%;
+}
+
+.correct {
+    background-color: #60BF88;
+}
+
+.incorrect {
+    background-color: #EA8282;
 }

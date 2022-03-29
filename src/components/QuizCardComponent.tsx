@@ -1,4 +1,4 @@
-import React, { FC, RefObject, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import "../styles/quizCardStyles.css"
 import { Answer } from "../types/Answer";
 import { NewQuizRequest } from "../types/NewQuizResponse";
@@ -16,7 +16,6 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
     const [incorrect, setIncorrect] = useState(0)
     const [correctResponses, setCorrectResponses] = useState(0);
     const [quizComplete, setQuizComplete] = useState(false);
-    const refs: RefObject<any> = useRef([1,2,3,4].map(()=> React.createRef())); //mapping array of 4 possible answers
     let question: any = questions[currentQuestion];
     useEffect(()=>{
         clearState();
@@ -28,7 +27,7 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
         setSelection(0);
     }
 
-    const proceed = (complete? :boolean): void => {
+    const proceed = (complete?: boolean): void => {
         if(complete){
             setQuizComplete(true)
             return;
@@ -40,25 +39,23 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
         if(selection > 0)
             return;
         setSelection(option.id);
-        let allAnswers = questions[currentQuestion].answers;
-        let correctIdx = allAnswers.findIndex(ans => ans.correct);
-        let currentIdx = allAnswers.findIndex(ans => ans === option);
-        refs.current[currentIdx].current.className = refs.current[currentIdx].current.className + " selected"
-        refs.current[correctIdx].current.style.backgroundColor = "#60BF88"; //green
         if(option.correct){
             setCorrectResponses(correctResponses + 1);
         }
         else{
             setIncorrect(option.id)
-            refs.current[currentIdx].current.style.backgroundColor = "#EA8282"; //red
         }
+    }
+
+    const retry = () => {
+        window.location.reload();
     }
     return (
         <div className="quizCardParent">
             <h2>Country quiz</h2>
             <div className="quizCard">
                 {quizComplete ? 
-                <WinnerComponent /> :
+                <WinnerComponent correctAnswers={correctResponses} retryCb={retry} /> :
                 <>
                     <img className="adventureImg" src="/undraw_adventure.svg" alt="adventure" />
                     <div className="quiz">
@@ -76,11 +73,11 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
                             })
                         } */}
                         {
-                            <div key={question.id}>
+                            <div>
                                 <strong>{question.text}</strong>
                                 {question.answers.map((option: Answer, idx: number) => {
-                                    return <OptionComponent key={option.id} refs={refs.current[idx]} option={option} 
-                                    showIcon={selection === option.id || incorrect === option.id} optionSelectCb={select}  /> 
+                                    return <OptionComponent key={option.id} option={option} selected={selection}
+                                    showIcon={selection === option.id || incorrect === option.id} incorrectId={incorrect} optionSelectCb={select}  /> 
                                 })}
                             </div>    
                         }
