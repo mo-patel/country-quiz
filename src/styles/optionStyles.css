@@ -20,7 +20,7 @@
 }
 
 .optionRow:hover {
-    background-color: darkolivegreen;
+    background-color: #F9A826;
     cursor: pointer;
     user-select: none;
 }
@@ -29,4 +29,5 @@
     width: 20px;
     height: 20px;
     align-self: center;
+    margin: 4%;
 }

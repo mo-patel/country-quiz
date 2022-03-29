@@ -1,21 +1,26 @@
-import { FC } from "react";
+import { FC, RefObject } from "react";
 import '../styles/optionStyles.css';
 import { Answer } from "../types/Answer";
+import { TiTick } from 'react-icons/ti';
+import { ImCross } from 'react-icons/im'; 
 
 interface optionComponentProps {
+    refs: RefObject<any>;
     option: Answer;
-    iconId: number; // 0: do not show, 1: show tick, 2: show cross
+    showIcon: boolean;
+    optionSelectCb: (option: Answer) => void;
 }
-export const OptionComponent: FC<optionComponentProps> = ({option, iconId}) => {
+export const OptionComponent: FC<optionComponentProps> = ({refs, option, showIcon, optionSelectCb}) => {
     const letters: string[] = ["A", "B", "C", "D"];
     return (
-        <div className="selectable optionRow">
+        <div className="selectable optionRow" ref={refs} onClick={(e) => optionSelectCb(option)} >
             <div>
-                <strong>{letters[option.id]}</strong>
+                <strong>{letters[option.id - 1]}</strong>
                 <p>{option.text}</p>
             </div>
-            {iconId > 0 ?
-                <img className="icon" src={iconId === 1 ? "/tick.png" : "/cross.png"} alt={iconId === 1 ? "correct" : "incorrect"}/>
+            {showIcon ?
+                
+               option.correct ? <TiTick className="icon" /> : <ImCross className="icon" />
                 : false
             }
         </div>

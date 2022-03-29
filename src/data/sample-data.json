@@ -7,21 +7,21 @@
           "type": "CAPITAL_CITY",
           "answers": [
             {
-              "id": 0,
+              "id": 1,
               "text": "Vietnam",
               "correct": false
             },
             {
-              "id": 1,
+              "id": 2,
               "text": "Malaysia",
               "correct": true
             },{
-              "id": 2,
+              "id": 3,
               "text": "Sweden",
               "correct": false
             },
             {
-              "id": 3,
+              "id": 4,
               "text": "Austria",
               "correct": false
             }
@@ -34,21 +34,21 @@
           "type": "CAPITAL_CITY",
           "answers": [
             {
-              "id": 0,
+              "id": 1,
               "text": "New Zealand",
               "correct": false
             },
             {
-              "id": 1,
+              "id": 2,
               "text": "Australia",
               "correct": false
             },{
-              "id": 2,
+              "id": 3,
               "text": "Belgium",
               "correct": false
             },
             {
-              "id": 3,
+              "id": 4,
               "text": "Canada",
               "correct": true
             }
