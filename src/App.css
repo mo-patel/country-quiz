@@ -21,25 +21,6 @@
   flex: 2;
 }
 
-.credits {
-  width: 100%;
-  align-self: center;
-  margin-bottom: 3%;
-  font-family: Montserrat;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 17px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: white;
-}
-
-.credits a{
-  color: white;
-  font-weight: 900;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -77,4 +58,39 @@
 
 .selected {
   color: white;
+}
+
+.credits {
+  width: 100%;
+  align-self: center;
+  margin-bottom: 3%;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+}
+
+.credits a{
+  color: white;
+  font-weight: 900;
+}
+
+.notifBar {
+  width: 100%;
+  align-self: center;
+  margin-bottom: 3%;
+  font-family: Montserrat;
+  font-size: 2vh;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: black;
+  background-color: yellow;
+  padding: 2%;
 }

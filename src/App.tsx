@@ -7,6 +7,7 @@ import { NewQuizRequest } from './types/NewQuizResponse';
 
 function App() {
   const [data, setData] = useState<NewQuizRequest>();
+  const [useSample, setUseSample] = useState(false);
   useEffect(()=>{
     const loadData = async () => {
       try{
@@ -17,13 +18,15 @@ function App() {
       }catch(e){
         alert('An issue occurred retrieving the data. Check console for details. Loading sample data...');
         console.log(e);
-        setData(sampleData)
+        setUseSample(true);
+        setData(sampleData);
       }
     }
     loadData();
   }, [])
   return (
     <div className="App">
+      {useSample ? <div className="notifBar">Using sample data. Refresh to use live data.</div> : null}
       <div className="main">
         {data ? 
           <QuizCardComponent data={data} /> :
