@@ -1,32 +1,30 @@
 import React, { FC, useEffect, useState } from "react";
 import "../styles/quizCardStyles.css"
 import { Answer } from "../types/Answer";
-import { NewQuizRequest } from "../types/NewQuizResponse";
 import { OptionComponent } from "./OptionComponent";
 import { WinnerComponent } from "./WinnerComponent";
 
 interface quizCardProps {
-    data: NewQuizRequest
+    data: any
 }
 
 export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
-    const [questions, setQuestions] = useState(data.questions)
+    const [questions, setQuestions] = useState(data?.questions)
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selection, setSelection] = useState(0);
     const [incorrect, setIncorrect] = useState(0)
     const [correctResponses, setCorrectResponses] = useState(0);
     const [quizComplete, setQuizComplete] = useState(false);
-    let question: any = questions[currentQuestion];
-    useEffect(()=>{
-        clearState();
-        question = questions[currentQuestion];
-    }, [currentQuestion])
-
+    let question: any = data ? questions[currentQuestion]: null;
     const clearState = () => {
         setIncorrect(0);
         setSelection(0);
     }
-
+    useEffect(()=>{
+        clearState();
+        // question = data?.questions ? questions[currentQuestion]: null;
+    }, [currentQuestion])
+    
     const proceed = (complete?: boolean): void => {
         if(complete){
             setQuizComplete(true)
@@ -49,6 +47,9 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
 
     const retry = () => {
         window.location.reload();
+    }
+    if(!question){
+        return <p>waiting..</p>
     }
     return (
         <div className="quizCardParent">

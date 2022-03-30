@@ -17,9 +17,10 @@
 
 .quizCardParent h2 {
     width: 100%;
+    height: auto;
     display: flex;
     justify-content: flex-start;
-    font-size: 2em;
+    font-size: 4vh;
     color: white;
     font-family: Poppins;
     font-style: normal;
