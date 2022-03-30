@@ -3,14 +3,21 @@ import './App.css';
 import { QuizCardComponent } from './components/QuizCardComponent';
 import sampleData from "./data/sample-data.json"
 import { createQuiz } from './services/quizService';
+import { NewQuizRequest } from './types/NewQuizResponse';
 
 function App() {
-  const [data, setData] = useState();
+  const [data, setData] = useState<NewQuizRequest>();
   useEffect(()=>{
     const loadData = async () => {
-      let res = await createQuiz();
-      if(res){
-        setData(res);
+      try{
+        let res = await createQuiz();
+        if(res){
+          return setData(res);
+        }
+      }catch(e){
+        alert('An issue occurred retrieving the data. Check console for details. Loading sample data...');
+        console.log(e);
+        setData(sampleData)
       }
     }
     loadData();
