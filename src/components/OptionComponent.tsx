@@ -4,14 +4,15 @@ import { Answer } from "../types/Answer";
 import { TiTick } from 'react-icons/ti';
 import { ImCross } from 'react-icons/im'; 
 
-interface optionComponentProps {
+interface OptionComponentProps {
     option: Answer;
     showIcon: boolean;
     selected: number;
+    idx: number
     incorrectId: number;
     optionSelectCb: (option: Answer) => void;
 }
-export const OptionComponent: FC<optionComponentProps> = ({option, showIcon, selected, incorrectId, optionSelectCb}) => {
+export const OptionComponent: FC<OptionComponentProps> = ({option, showIcon, selected, idx, incorrectId, optionSelectCb}) => {
     const letters: string[] = ["A", "B", "C", "D"];
     let selectedClass = selected === option.id ? "selected " : "";
     let correctClass = selected && option.correct ? "correct ": "";
@@ -19,14 +20,17 @@ export const OptionComponent: FC<optionComponentProps> = ({option, showIcon, sel
     return (
         <div className={selectedClass + correctClass + incorrectClass + "selectable optionRow"} onClick={() => optionSelectCb(option)} >
             <div>
-                <strong>{letters[option.id - 1]}</strong>
+                <strong>{letters[idx]}</strong>
                 <p>{option.text}</p>
+                <div className="iconTag">
+                    {showIcon ?
+                        
+                    option.correct ? <TiTick className="icon" /> : <ImCross className="icon" />
+                        : false
+                    }
+                </div>
             </div>
-            {showIcon ?
-                
-               option.correct ? <TiTick className="icon" /> : <ImCross className="icon" />
-                : false
-            }
+            
         </div>
     );
 }

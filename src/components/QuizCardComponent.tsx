@@ -1,28 +1,29 @@
 import React, { FC, useEffect, useState } from "react";
 import "../styles/quizCardStyles.css"
 import { Answer } from "../types/Answer";
+import { NewQuizResponse } from "../types/NewQuizResponse";
+import { Question } from "../types/Question";
 import { OptionComponent } from "./OptionComponent";
 import { WinnerComponent } from "./WinnerComponent";
 
-interface quizCardProps {
-    data: any
+interface QuizCardComponentProps {
+    data: NewQuizResponse;
 }
 
-export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
-    const [questions, setQuestions] = useState(data?.questions)
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [selection, setSelection] = useState(0);
-    const [incorrect, setIncorrect] = useState(0)
-    const [correctResponses, setCorrectResponses] = useState(0);
-    const [quizComplete, setQuizComplete] = useState(false);
-    let question: any = data ? questions[currentQuestion]: null;
-    const clearState = () => {
+export const QuizCardComponent: FC<QuizCardComponentProps> = ({data}) => {
+    const [questions, setQuestions] = useState<Question[]>(data?.questions)
+    const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+    const [selection, setSelection] = useState<number>(0);
+    const [incorrect, setIncorrect] = useState<number>(0)
+    const [correctResponses, setCorrectResponses] = useState<number>(0);
+    const [quizComplete, setQuizComplete] = useState<boolean>(false);
+    let question: Question | null = data ? questions[currentQuestion]: null;
+    const clearState = (): void => {
         setIncorrect(0);
         setSelection(0);
     }
     useEffect(()=>{
         clearState();
-        // question = data?.questions ? questions[currentQuestion]: null;
     }, [currentQuestion])
     
     const proceed = (complete?: boolean): void => {
@@ -33,7 +34,7 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
         setCurrentQuestion(currentQuestion + 1)
     }
     
-    const select = (option: Answer) => {
+    const select = (option: Answer): void => {
         if(selection > 0)
             return;
         setSelection(option.id);
@@ -45,7 +46,7 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
         }
     }
 
-    const retry = () => {
+    const retry = (): void => {
         window.location.reload();
     }
     if(!question){
@@ -60,25 +61,12 @@ export const QuizCardComponent: FC<quizCardProps> = ({data}) => {
                 <>
                     <img className="adventureImg" src="/undraw_adventure.svg" alt="adventure" />
                     <div className="quiz">
-                        {/* {
-                            questions.map((item, ix) => {
-                                return (ix === currentQuestion) ? 
-                                <div key={item.id}>
-                                    <strong>{item.text}</strong>
-                                    {item.answers.map((option, idx) => {
-                                        return <OptionComponent key={option.id} refs={refs.current[idx]} option={option} 
-                                        showIcon={selection === option.id || incorrect === option.id} optionSelectCb={select}  /> 
-                                    })}
-                                </div>
-                                : false
-                            })
-                        } */}
                         {
                             <div>
                                 {question.mediaUrl ? <img className="flagImg" src={question.mediaUrl} alt="flag" /> : null}
                                 <strong>{question.text}</strong>
                                 {question.answers.map((option: Answer, idx: number) => {
-                                    return <OptionComponent key={option.id} option={option} selected={selection}
+                                    return <OptionComponent key={option.id} option={option} selected={selection} idx={idx}
                                     showIcon={selection === option.id || incorrect === option.id} incorrectId={incorrect} optionSelectCb={select}  /> 
                                 })}
                             </div>    

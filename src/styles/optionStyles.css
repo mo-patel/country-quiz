@@ -1,28 +1,26 @@
-/* .optionRow {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 80%;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 1%;
-    margin-bottom: 3%;
-} */
-
-.optionRow div{
-    display: inherit;
-    justify-content: space-evenly;
-    width: 75%;
+.optionRow {
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
-.optionRow div strong{
+.optionRow > div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.optionRow > div strong{
     align-self: center;
 }
 
-.optionRow:hover {
+.optionRow:hover:not(.selected):not(.correct) {
     background-color: #F9A826;
     cursor: pointer;
     user-select: none;
+}
+
+.iconTag {
+    align-self: center;
 }
 
 .icon {

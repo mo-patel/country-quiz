@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import './App.css';
+import './styles/App.css';
 import { QuizCardComponent } from './components/QuizCardComponent';
 import sampleData from "./data/sample-data.json"
 import { createQuiz } from './services/quizService';
-import { NewQuizRequest } from './types/NewQuizResponse';
+import { NewQuizResponse } from './types/NewQuizResponse';
 
 function App() {
-  const [data, setData] = useState<NewQuizRequest>();
+  const [data, setData] = useState<NewQuizResponse>();
   const [useSample, setUseSample] = useState(false);
   useEffect(()=>{
     const loadData = async () => {

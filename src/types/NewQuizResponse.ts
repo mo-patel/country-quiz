@@ -1,6 +1,6 @@
 import { Question } from "./Question";
 
-export interface NewQuizRequest {
+export interface NewQuizResponse {
     questions: Question[];
     createdAt: string;
     numberOfQuestions: number;

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 #root {
   height: 100vh;
 }
@@ -52,7 +53,6 @@
   width: 80%;
   border: 1px solid black;
   border-radius: 5px;
-  padding: 1%;
   margin-bottom: 3%;
 }
 
@@ -64,7 +64,7 @@
   width: 100%;
   align-self: center;
   margin-bottom: 3%;
-  font-family: Montserrat;
+  font-family: Montserrat, Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -83,7 +83,7 @@
   width: 100%;
   align-self: center;
   margin-bottom: 3%;
-  font-family: Montserrat;
+  font-family: Montserrat, Poppins;
   font-size: 2vh;
   font-style: normal;
   font-weight: 400;

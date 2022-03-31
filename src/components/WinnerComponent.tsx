@@ -1,12 +1,12 @@
 import { FC } from "react";
 import "../styles/winnerStyles.css";
 
-interface winnerComponentProps {
+interface WinnerComponentProps {
     correctAnswers: number
     retryCb: () => void;
 }
 
-export const WinnerComponent: FC<winnerComponentProps> = ({correctAnswers, retryCb}) => {
+export const WinnerComponent: FC<WinnerComponentProps> = ({correctAnswers, retryCb}) => {
     return (
         <div className="winnerParent">
             <img src="/undraw_winners.svg" alt="Results" />
