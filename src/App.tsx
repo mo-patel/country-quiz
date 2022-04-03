@@ -4,6 +4,7 @@ import { QuizCardComponent } from './components/QuizCardComponent';
 import sampleData from "./data/sample-data.json"
 import { createQuiz } from './services/quizService';
 import { NewQuizResponse } from './types/NewQuizResponse';
+import {AiOutlineLoading3Quarters} from 'react-icons/ai'
 
 function App() {
   const [data, setData] = useState<NewQuizResponse>();
@@ -30,7 +31,11 @@ function App() {
       <div className="main">
         {data ? 
           <QuizCardComponent data={data} /> :
-          <p> Loading... </p>
+          <div className='loading'>
+            <AiOutlineLoading3Quarters className='loadingIcon' />
+            <p> The backend can take up to 20 seconds to fire up on initial load. Please be patient... </p>
+          </div>
+          
         }
         
       </div>
